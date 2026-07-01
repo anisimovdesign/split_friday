@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сплит-пятница — Яндекс Маркет</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="screen">
+    <div class="screen__gradients" aria-hidden="true">
+      <div class="screen__gradient is-active" data-hero-gradient="market">
+        <div class="screen__gradient-inner">
+          <img src="assets/screen/gradient.svg" alt="">
+        </div>
+      </div>
+      <div class="screen__gradient" data-hero-gradient="split">
+        <div class="screen__gradient-inner">
+          <img src="assets/screen/gradient-split.svg" alt="">
+        </div>
+      </div>
+      <div class="screen__gradient" data-hero-gradient="pay">
+        <div class="screen__gradient-inner">
+          <img src="assets/screen/gradient-pay.svg" alt="">
+        </div>
+      </div>
+    </div>
+
+    <header class="navbar">
+      <div class="status-bar">
+        <time class="status-bar__time" datetime="09:41">09:41</time>
+        <div class="status-bar__icons">
+          <img class="status-bar__cellular" src="assets/screen/cellular.svg" width="19" height="12" alt="">
+          <img class="status-bar__wifi" src="assets/screen/wifi.svg" width="17" height="12" alt="">
+          <div class="status-bar__battery" aria-hidden="true">
+            <span class="status-bar__battery-body"></span>
+          </div>
+        </div>
+      </div>
+      <div class="navbar__bar">
+        <button class="navbar__back" type="button" aria-label="Назад">
+          <img src="assets/screen/back.svg" width="24" height="24" alt="">
+        </button>
+      </div>
+    </header>
+
+    <main class="screen__content">
+      <section class="lead">
+        <div class="hero-carousel" data-hero-carousel>
+          <div class="hero-carousel__layer hero-carousel__layer--text">
+            <div class="hero-carousel__viewport">
+              <div class="hero-carousel__track" data-hero-track="text">
+                <article class="hero-slide is-active" data-slide="market">
+                  <div class="hero-slide__text">
+                    <h1 class="hero-slide__title">Сплит-пятница на&nbsp;Яндекс&nbsp;Маркете</h1>
+                    <p class="hero-slide__subtitle">
+                      0&#8288;0&#8288;12 на всё<br>
+                      0&#8381;&nbsp;переплаты на 12 мес
+                    </p>
+                  </div>
+                </article>
+
+                <article class="hero-slide" data-slide="split">
+                  <div class="hero-slide__text">
+                    <h1 class="hero-slide__title">6&nbsp;мес без переплат на&nbsp;все покупки</h1>
+                    <p class="hero-slide__subtitle">
+                      Делите оплаты на&nbsp;6&nbsp;месяцев и&nbsp;не&nbsp;переплачивайте ничего
+                    </p>
+                  </div>
+                </article>
+
+                <article class="hero-slide" data-slide="pay">
+                  <div class="hero-slide__text">
+                    <h1 class="hero-slide__title">10% кэшбек картой Пэй на&nbsp;всё</h1>
+                    <p class="hero-slide__subtitle">
+                      Платите картой Пэй<br>
+                      и&nbsp;собирайте кэшбек
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-carousel__layer hero-carousel__layer--image">
+            <div class="hero-carousel__viewport">
+              <div class="hero-carousel__track" data-hero-track="image">
+                <article class="hero-slide is-active" data-slide="market">
+                  <div class="hero-slide__image">
+                    <img src="assets/screen/market.png" alt="">
+                  </div>
+                </article>
+
+                <article class="hero-slide" data-slide="split">
+                  <div class="hero-slide__image">
+                    <img src="assets/screen/split.png" alt="">
+                  </div>
+                </article>
+
+                <article class="hero-slide" data-slide="pay">
+                  <div class="hero-slide__image">
+                    <img src="assets/screen/pay.png" alt="">
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lead__button-group">
+          <button class="button" type="button" aria-live="polite">
+            <span class="button__viewport">
+              <span class="button__countdown" data-state="countdown">
+                <span class="button__icon-wrap">
+                  <img class="button__icon" src="assets/clock-icon.svg" width="20" height="20" alt="">
+                </span>
+                <span class="button__title">
+                  <span class="button__phrase">
+                    <span class="button__roll button__roll--digit" aria-hidden="true">
+                      <span class="button__roll-track">
+                        <span class="button__roll-item">2</span>
+                        <span class="button__roll-item">1</span>
+                      </span>
+                    </span>
+                    <span class="button__roll button__roll--word" aria-hidden="true">
+                      <span class="button__roll-track">
+                        <span class="button__roll-item">часа</span>
+                        <span class="button__roll-item">час</span>
+                      </span>
+                    </span>
+                  </span>
+                  <span class="button__suffix">до&nbsp;начала</span>
+                </span>
+              </span>
+              <span class="button__cta">Вперёд к&nbsp;покупкам</span>
+            </span>
+          </button>
+
+          <div class="hero-dots" role="tablist" aria-label="Баннеры">
+            <button class="hero-dots__item is-active" type="button" role="tab" aria-current="true" aria-label="Маркет">
+              <span class="hero-dots__fill" aria-hidden="true"></span>
+            </button>
+            <button class="hero-dots__item" type="button" role="tab" aria-label="Сплит">
+              <span class="hero-dots__fill" aria-hidden="true"></span>
+            </button>
+            <button class="hero-dots__item" type="button" role="tab" aria-label="Пэй">
+              <span class="hero-dots__fill" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="offers">
+        <h2 class="offers__heading">
+          Все предложения<br>
+          только в эту пятницу
+        </h2>
+
+        <div class="offers__list">
+          <article class="offer-card">
+            <div class="offer-card__text">
+              <h3 class="offer-card__title">0&#8288;0&#8288;6 на все покупки</h3>
+              <p class="offer-card__desc">Никаких переплат на&nbsp;покупки со&nbsp;сроком 6&nbsp;месяцев</p>
+            </div>
+            <div class="offer-card__image offer-card__image--1">
+              <img src="assets/screen/card-1.png" alt="">
+            </div>
+          </article>
+
+          <article class="offer-card">
+            <div class="offer-card__text">
+              <h3 class="offer-card__title">10% кэшбек на всё</h3>
+              <p class="offer-card__desc">Платите картой Пэй<br>и&nbsp;собирайте кэшбек</p>
+            </div>
+            <div class="offer-card__image offer-card__image--2">
+              <img src="assets/screen/card-2.png" alt="">
+            </div>
+          </article>
+
+          <article class="offer-card">
+            <div class="offer-card__text">
+              <h3 class="offer-card__title">Сплит-пятница на&nbsp;Яндекс&nbsp;Маркете</h3>
+              <p class="offer-card__desc">
+                0&#8288;0&#8288;12 на всё<br>
+                0&#8381;&nbsp;переплаты на 12 мес
+              </p>
+            </div>
+            <div class="offer-card__image offer-card__image--3">
+              <img src="assets/screen/card-3.png" alt="">
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <div class="home-bar" aria-hidden="true">
+      <img src="assets/screen/home-bar.svg" alt="">
+    </div>
+  </div>
+
+  <script src="button.js"></script>
+  <script src="carousel.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

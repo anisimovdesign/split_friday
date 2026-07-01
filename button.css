@@ -1,0 +1,330 @@
+/* Animated countdown → CTA button (Сплит-пятница) */
+
+.button {
+  --bg-idle: #edeff2;
+  --bg-active: #2e2f33;
+  --text-primary: rgba(0, 0, 0, 0.86);
+  --text-inverted: rgba(255, 255, 255, 0.98);
+  --font-size: 16px;
+  --line-height: 20px;
+  --font-weight: 500;
+  --duration: 1400ms;
+  --roll-duration: 240ms;
+  --roll-delay-digit: 60ms;
+  --roll-delay-word: 150ms;
+  --shift-duration: 240ms;
+  --digit-width: 9px;
+  --word-width-from: 35px;
+  --word-width-to: 26px;
+  --phrase-gap: 6px;
+  --suffix-shift: 0px;
+  --exit-delay: 780ms;
+  --exit-duration: 620ms;
+  --ease-standard: cubic-bezier(0.5, 0, 0.5, 1);
+  --ease-in-out: ease-in-out;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 247px;
+  height: 48px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 16px;
+  background: var(--bg-idle);
+  cursor: pointer;
+  overflow: hidden;
+  font-family: "YS Text", system-ui, sans-serif;
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  font-weight: var(--font-weight);
+  font-feature-settings: "lnum" 1, "pnum" 1;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 280ms var(--ease-standard);
+}
+
+.button:focus-visible {
+  outline: 2px solid #0077ff;
+  outline-offset: 2px;
+}
+
+.button__viewport {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: var(--line-height);
+}
+
+.button__countdown,
+.button__cta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: var(--line-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: inherit;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.button__countdown {
+  gap: 6px;
+  color: var(--text-primary);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.button__icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transform: translateX(0);
+}
+
+.button__icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.button__title {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--phrase-gap);
+}
+
+.button__phrase {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--phrase-gap);
+}
+
+.button__roll {
+  display: block;
+  overflow: hidden;
+  height: var(--line-height);
+  flex-shrink: 0;
+  font: inherit;
+}
+
+.button__roll-track {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(0);
+}
+
+.button__roll-item {
+  display: block;
+  height: var(--line-height);
+  line-height: var(--line-height);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+.button__roll--digit {
+  width: var(--digit-width);
+  text-align: right;
+}
+
+.button__roll--word {
+  width: var(--word-width-from);
+}
+
+.button__suffix {
+  display: inline-block;
+  font: inherit;
+  transform: translateX(0);
+}
+
+.button__cta {
+  color: var(--text-inverted);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+.button.is-animating .button__roll--digit .button__roll-track {
+  animation: roll-step var(--roll-duration) cubic-bezier(0.45, 0, 0.55, 1) forwards;
+  animation-delay: var(--roll-delay-digit);
+}
+
+.button.is-animating .button__roll--word .button__roll-track {
+  animation: roll-step var(--roll-duration) cubic-bezier(0.45, 0, 0.55, 1) forwards;
+  animation-delay: var(--roll-delay-word);
+}
+
+.button.is-animating .button__roll--word {
+  animation: word-width var(--shift-duration) var(--ease-in-out) forwards;
+  animation-delay: var(--roll-delay-word);
+}
+
+.button.is-animating .button__icon-wrap {
+  animation: icon-shift var(--shift-duration) var(--ease-in-out) forwards;
+  animation-delay: calc(var(--roll-delay-word) + 40ms);
+}
+
+.button.is-animating .button__suffix {
+  animation: suffix-shift var(--shift-duration) var(--ease-in-out) forwards;
+  animation-delay: var(--roll-delay-word);
+}
+
+.button.is-animating .button__countdown {
+  animation: countdown-exit var(--exit-duration) var(--ease-standard) forwards;
+  animation-delay: var(--exit-delay);
+}
+
+.button.is-animating .button__cta {
+  animation: cta-enter var(--exit-duration) var(--ease-standard) forwards;
+  animation-delay: var(--exit-delay);
+}
+
+.button.is-animating {
+  animation: bg-swap var(--exit-duration) var(--ease-standard) forwards;
+  animation-delay: var(--exit-delay);
+}
+
+.button.is-cta {
+  background: var(--bg-active);
+}
+
+.button.is-cta .button__countdown {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+.button.is-cta .button__cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.button.is-cta .button__icon-wrap {
+  transform: translateX(5px);
+}
+
+.button.is-cta .button__roll-track {
+  transform: translateY(calc(-1 * var(--line-height)));
+}
+
+.button.is-cta .button__roll--word {
+  width: var(--word-width-to);
+}
+
+.button.is-cta .button__suffix {
+  transform: translateX(var(--suffix-shift));
+}
+
+@keyframes roll-step {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(calc(-1 * var(--line-height)));
+  }
+}
+
+@keyframes word-width {
+  from {
+    width: var(--word-width-from);
+  }
+
+  to {
+    width: var(--word-width-to);
+  }
+}
+
+@keyframes icon-shift {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes suffix-shift {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(var(--suffix-shift));
+  }
+}
+
+@keyframes countdown-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes cta-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bg-swap {
+  from {
+    background-color: var(--bg-idle);
+  }
+
+  to {
+    background-color: var(--bg-active);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button.is-animating,
+  .button.is-animating .button__countdown,
+  .button.is-animating .button__cta,
+  .button.is-animating .button__roll--digit .button__roll-track,
+  .button.is-animating .button__roll--word .button__roll-track,
+  .button.is-animating .button__roll--word,
+  .button.is-animating .button__icon-wrap,
+  .button.is-animating .button__suffix {
+    animation: none;
+  }
+
+  .button.is-animating.is-cta,
+  .button.is-cta {
+    background: var(--bg-active);
+  }
+
+  .button.is-animating.is-cta .button__countdown,
+  .button.is-cta .button__countdown {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  .button.is-animating.is-cta .button__cta,
+  .button.is-cta .button__cta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .button.is-cta .button__roll--word {
+    width: var(--word-width-to);
+  }
+}
